@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetScanner", "Internet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetScanner.Tests", "..\InternetScanner.Tests\InternetScanner.Tests.csproj", "{250B707C-F07A-4054-99A9-DD380768C352}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetScanner.IntegrationTests", "InternetScanner.IntegrationTests\InternetScanner.IntegrationTests.csproj", "{89B388F8-C7D4-433D-B5E2-B346078B2E87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{250B707C-F07A-4054-99A9-DD380768C352}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{250B707C-F07A-4054-99A9-DD380768C352}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{250B707C-F07A-4054-99A9-DD380768C352}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89B388F8-C7D4-433D-B5E2-B346078B2E87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89B388F8-C7D4-433D-B5E2-B346078B2E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89B388F8-C7D4-433D-B5E2-B346078B2E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89B388F8-C7D4-433D-B5E2-B346078B2E87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

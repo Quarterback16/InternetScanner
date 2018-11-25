@@ -28,24 +28,40 @@ namespace InternetScanner
 
 		public void Scan(FeedReaderQuery feedQuery)
 		{
-			// read
+			// query
 			var items = _feedQueryHandler.Handle(feedQuery);
 			// filter
 			var newItems = _gotItQuery.GetNewItems(items);
-			//  convert to feedItem is this necessary?
-			var newFeedItems = ConvertToFeedItems(newItems);
-			// add to the command bus
-			Send(newFeedItems);
+			if (newItems.Count > 0)
+			{
+				//  convert to feedItem is this necessary?
+				var newFeedItems = ConvertToFeedItems(newItems);
+				// add to the command bus
+				Send(newFeedItems);
+			}
+			else
+				Logger.Info("No new items found");
 		}
 
 		private List<FeedItem> ConvertToFeedItems(
 			List<SyndicationItem> newItems)
 		{
-			throw new NotImplementedException();
+			var result = new List<FeedItem>();
+			foreach (var item in newItems)
+			{
+				var feedItem = new FeedItem(item,new Feed());
+				result.Add(feedItem);
+			}
+			return result;
 		}
 
 		private void Send(List<FeedItem> items)
 		{
+			if ( _bus == null )
+			{
+				Logger.Warning("There is no bus for the messages");
+				return;
+			}
 			foreach (var item in items)
 			{
 				try
@@ -56,6 +72,7 @@ namespace InternetScanner
 							ArticleDate = item.GetDatePublished(),
 							ArticleText = item.GetSummary()
 						});
+					Logger.Info($"{item.GetDatePublished()} : {item.GetSummary()}");
 				}
 				catch (Exception ex)
 				{

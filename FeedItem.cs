@@ -50,11 +50,11 @@ namespace InternetScanner
 		public void DumpItem()
 		{
 			Console.WriteLine("Title: {0}", GetTitle());
-			Console.WriteLine("Cats: {0}", GetCategories());
+			//Console.WriteLine("Cats: {0}", GetCategories());
 			Console.WriteLine("Summary: {0}", GetSummary());
 			Console.WriteLine("Published: {0}", GetDatePublished());
-			Console.WriteLine("Links: {0}", GetLinks());
-			Console.WriteLine("Torrent: {0}", GetTfile());
+			//Console.WriteLine("Links: {0}", GetLinks());
+			//Console.WriteLine("Torrent: {0}", GetTfile());
 			Console.WriteLine(string.Empty);
 		}
 

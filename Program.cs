@@ -1,7 +1,4 @@
-﻿
-
-
-using Autofac;
+﻿using Autofac;
 using InternetScanner.Bus;
 using Shuttle.Core.Autofac;
 using Shuttle.Core.ServiceHost;
@@ -40,7 +37,6 @@ namespace InternetScanner
 
 			scanner.Scan(new FeedReaderQuery(feed));
 		}
-
 
 	}
 }

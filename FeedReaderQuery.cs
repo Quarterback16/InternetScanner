@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ServiceModel.Syndication;
 
 namespace InternetScanner
@@ -10,7 +9,7 @@ namespace InternetScanner
 
 		public FeedReaderQuery(Feed feed)
 		{
-			Feed = Feed;
+			Feed = feed;
 		}
 
 	}
