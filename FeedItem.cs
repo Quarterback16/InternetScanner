@@ -61,7 +61,9 @@ namespace InternetScanner
 		public string GetCategories()
 		{
 			var arr = _item.Categories.ToArray();
-			return arr.Aggregate(string.Empty, (current, cat) => current + cat.Name);
+			return arr.Aggregate(
+				string.Empty, 
+				(current, cat) => current + cat.Name);
 		}
 
 		public string GetLinks()

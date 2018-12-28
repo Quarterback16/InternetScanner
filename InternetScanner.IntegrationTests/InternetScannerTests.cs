@@ -1,5 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using InternetScanner.IntegrationTests.Fakes;
+using Shuttle.Core.StructureMap;
+using Shuttle.Esb;
+using StructureMap;
 
 namespace InternetScanner.IntegrationTests
 {
@@ -7,15 +10,18 @@ namespace InternetScanner.IntegrationTests
     public class InternetScannerTests
     {
 		[TestMethod]
-		public void ScannerReadsFeeds()
+		public void Scanner_ReadsFeedsAndSendsMessagesToTheBus()
 		{
-			//ServiceHost.Run<Host>();
+			var smRegistry = new Registry();
+			var registry = new StructureMapComponentRegistry(
+				smRegistry);
 
-			//var containerBuilder = new ContainerBuilder();
-			//var resolver = new AutofacComponentResolver(
-			//	containerBuilder.Build());
+			ServiceBus.Register(registry);
 
-			//var bus = ServiceBus.Create(resolver).Start();
+			var bus = ServiceBus.Create(
+				resolver: new StructureMapComponentResolver(
+								new Container(smRegistry)))
+				.Start();
 
 			var feed = new Feed
 			{
@@ -25,7 +31,7 @@ namespace InternetScanner.IntegrationTests
 			var feedQueryHandler = new FeedReaderQueryHandler();
 
 			var scanner = new InternetRssScanner(
-				bus: null,
+				bus: bus,
 				feedQueryHandler: feedQueryHandler,
 				gotItQuery: new FakeGotItQuery(),
 				logger: new FakeLogger());

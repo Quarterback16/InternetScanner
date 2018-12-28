@@ -1,8 +1,9 @@
-﻿using Autofac;
-using InternetScanner.Bus;
-using Shuttle.Core.Autofac;
+﻿using InternetScanner.Bus;
 using Shuttle.Core.ServiceHost;
 using Shuttle.Esb;
+using Shuttle.Core.StructureMap;
+using StructureMap;
+using System;
 
 namespace InternetScanner
 {
@@ -14,13 +15,7 @@ namespace InternetScanner
 	{
 		static void Main(string[] args)
 		{
-			ServiceHost.Run<Host>();
-
-			var containerBuilder = new ContainerBuilder();
-			var resolver = new AutofacComponentResolver(
-				containerBuilder.Build());
-
-			var bus = ServiceBus.Create(resolver).Start();
+			IServiceBus bus = StartTheBus();
 
 			var feed = new Feed
 			{
@@ -32,11 +27,29 @@ namespace InternetScanner
 			var scanner = new InternetRssScanner(
 				bus,
 				feedQueryHandler,
-				gotItQuery: null,
-				logger: null);
+				gotItQuery: new GotItQuery(),
+				logger: new NLogAdaptor());
 
-			scanner.Scan(new FeedReaderQuery(feed));
+			scanner.Scan(
+				new FeedReaderQuery(feed));
+
+			Console.Write("hit any key to exit");
+			Console.ReadLine();
 		}
 
+		private static IServiceBus StartTheBus()
+		{
+			var smRegistry = new Registry();
+			var registry = new StructureMapComponentRegistry(
+				smRegistry);
+
+			ServiceBus.Register(registry);
+
+			var bus = ServiceBus.Create(
+				resolver: new StructureMapComponentResolver(
+								new Container(smRegistry)))
+				.Start();
+			return bus;
+		}
 	}
 }

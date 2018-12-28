@@ -89,6 +89,9 @@
     <Reference Include="Shuttle.Core.Streams, Version=10.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Shuttle.Core.Streams.10.0.2\lib\net461\Shuttle.Core.Streams.dll</HintPath>
     </Reference>
+    <Reference Include="Shuttle.Core.StructureMap, Version=10.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Shuttle.Core.StructureMap.10.0.4\lib\net461\Shuttle.Core.StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="Shuttle.Core.Threading, Version=10.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Shuttle.Core.Threading.10.0.2\lib\net461\Shuttle.Core.Threading.dll</HintPath>
     </Reference>
@@ -98,8 +101,17 @@
     <Reference Include="Shuttle.Core.Transactions, Version=10.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Shuttle.Core.Transactions.10.0.1\lib\net461\Shuttle.Core.Transactions.dll</HintPath>
     </Reference>
+    <Reference Include="Shuttle.Core.Uris, Version=10.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Shuttle.Core.Uris.10.0.4\lib\net461\Shuttle.Core.Uris.dll</HintPath>
+    </Reference>
     <Reference Include="Shuttle.Esb, Version=10.1.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Shuttle.Esb.10.1.6\lib\net461\Shuttle.Esb.dll</HintPath>
+    </Reference>
+    <Reference Include="Shuttle.Esb.Msmq, Version=10.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Shuttle.Esb.Msmq.10.0.5\lib\net461\Shuttle.Esb.Msmq.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=4.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StructureMap.4.6.1\lib\net45\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -145,6 +157,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

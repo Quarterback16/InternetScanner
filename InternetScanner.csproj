@@ -48,6 +48,9 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>packages\NLog.4.5.11\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="Shuttle.Core.AutoFac, Version=10.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Shuttle.Core.AutoFac.10.0.4\lib\net461\Shuttle.Core.AutoFac.dll</HintPath>
     </Reference>
@@ -93,6 +96,9 @@
     <Reference Include="Shuttle.Core.Streams, Version=10.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Shuttle.Core.Streams.10.0.1\lib\net461\Shuttle.Core.Streams.dll</HintPath>
     </Reference>
+    <Reference Include="Shuttle.Core.StructureMap, Version=10.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Shuttle.Core.StructureMap.10.0.4\lib\net461\Shuttle.Core.StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="Shuttle.Core.Threading, Version=10.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Shuttle.Core.Threading.10.0.2\lib\net461\Shuttle.Core.Threading.dll</HintPath>
     </Reference>
@@ -111,6 +117,9 @@
     <Reference Include="Shuttle.Esb.Msmq, Version=10.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Shuttle.Esb.Msmq.10.0.5\lib\net461\Shuttle.Esb.Msmq.dll</HintPath>
     </Reference>
+    <Reference Include="StructureMap, Version=4.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\StructureMap.4.6.1\lib\net45\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -119,10 +128,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net" />
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
     </Reference>
@@ -144,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bus\Host.cs" />
+    <Compile Include="ConsoleLogger.cs" />
     <Compile Include="Feed.cs" />
     <Compile Include="FeedItem.cs" />
     <Compile Include="FeedItemGetter.cs" />
@@ -159,13 +171,20 @@
     <Compile Include="IQuery.cs" />
     <Compile Include="IQueryHandler.cs" />
     <Compile Include="Messages\NewsArticleCommand.cs" />
+    <Compile Include="NLogAdaptor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DeployInternetScannerToProd.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="ReadMe.md" />
+    <None Include="RunNops.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
